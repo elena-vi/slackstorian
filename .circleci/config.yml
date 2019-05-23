@@ -62,4 +62,7 @@ workflows:
       - deploy-production:
           requires:
             - test
+          filters:
+            branches:
+              only: master
 
