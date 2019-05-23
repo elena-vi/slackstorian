@@ -19,7 +19,7 @@ commands:
       - run:
           name: Deploy new lambda
           command: |
-            aws lambda update-function-code --region $AWS_REGION --function-name "<< parameters.function-name >>" --zip-file ./build.zip --query "LastModified"
+            aws lambda update-function-code --region $AWS_REGION --function-name "<< parameters.function-name >>" --zip-file "fileb://$CIRCLE_WORKING_DIRECTORY/build.zip" --query "LastModified"
             aws lambda update-function-configuration --region $AWS_REGION --function-name "lunchRota" --handler "<< parameters.function-handler >>" --query "Handler"
   build-release-zip:
     description: "Makes a zip file from project"
